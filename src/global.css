@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+@import 'uniwind';
+
+/*
+ * BookStack design tokens — sourced from the Figma "Design direction" variables.
+ * Keep in sync with src/theme/tokens.ts (used where a raw value is needed, e.g. icon colors).
+ */
+@theme {
+  /* Brand */
+  --color-brand: #31705e; /* --brand-fill */
+  --color-brand-on: #befe1a; /* --brand-on-fill */
+
+  /* Text */
+  --color-content: #353535; /* --text-primary */
+  --color-content-secondary: #777777; /* --text-secondary */
+  --color-content-inverse: #ffffff; /* --text-inverse */
+
+  /* Backgrounds */
+  --color-surface: #ffffff; /* --bg-default */
+  --color-surface-subtle: #f6f6f6; /* --bg-subtle */
+  --color-surface-muted: #e9e9e9; /* --bg-muted */
+  --color-surface-inverse: #353535; /* --bg-inverse */
+  --color-surface-glass: #ffffff80; /* --bg-glass */
+  --color-scrim: #00000066; /* --bg-scrim */
+
+  /* Borders */
+  --color-line: #e9e9e9; /* --border-default */
+  --color-line-glass: #ffffff80; /* --border-glass */
+
+  /* Status */
+  --color-success: #007a1f; /* --status-success-text */
+  --color-success-bg: #daf7dd; /* --status-success-bg */
+  --color-warning: #a85300; /* --status-warning-text */
+  --color-warning-bg: #faede4; /* --status-warning-bg */
+
+  /* Fonts — React Native needs one family per weight */
+  --font-body: SchibstedGrotesk_400Regular;
+  --font-body-medium: SchibstedGrotesk_500Medium;
+  --font-body-semibold: SchibstedGrotesk_600SemiBold;
+  --font-caption: Inter_600SemiBold;
+
+  /* Type scale (size / line height) */
+  --text-h2: 24px; /* H2 */
+  --text-h2--line-height: 32px;
+  --text-body-lg: 16px; /* Text Large */
+  --text-body-lg--line-height: 24px;
+  --text-body-sm: 14px; /* Text Small */
+  --text-body-sm--line-height: 22px;
+  --text-caption: 12px; /* Caption */
+  --text-caption--line-height: 18px;
+}
