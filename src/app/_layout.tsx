@@ -15,6 +15,7 @@ import { View } from 'react-native';
 
 import { Text } from '@/components/ui/text';
 import { db } from '@/db/client';
+import { AuthProvider } from '@/features/auth/auth-provider';
 import migrations from '../../drizzle/migrations';
 
 SplashScreen.preventAutoHideAsync();
@@ -48,12 +49,15 @@ export default function RootLayout() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <StatusBar style="dark" />
-      <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: '#ffffff' } }}>
-        <Stack.Screen name="(tabs)" />
-        <Stack.Screen name="book/[id]" />
-        <Stack.Screen name="add" options={{ presentation: 'modal' }} />
-      </Stack>
+      <AuthProvider>
+        <StatusBar style="dark" />
+        <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: '#ffffff' } }}>
+          <Stack.Screen name="(tabs)" />
+          <Stack.Screen name="book/[id]" />
+          <Stack.Screen name="add" options={{ presentation: 'modal' }} />
+          <Stack.Screen name="account" options={{ presentation: 'modal' }} />
+        </Stack>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }

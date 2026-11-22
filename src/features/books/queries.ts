@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { desc, eq } from 'drizzle-orm';
+import { and, desc, eq, isNull } from 'drizzle-orm';
 import { useLiveQuery } from 'drizzle-orm/expo-sqlite';
 
 import { db } from '@/db/client';
@@ -13,13 +13,20 @@ export function useBooks(filter: LibraryFilter) {
   const query = db
     .select()
     .from(books)
-    .where(filter === 'all' ? undefined : eq(books.status, filter))
+    .where(and(isNull(books.deletedAt), filter === 'all' ? undefined : eq(books.status, filter)))
     .orderBy(desc(books.createdAt));
   return useLiveQuery(query, [filter]);
 }
 
 export function useBook(id: string) {
-  return useLiveQuery(db.select().from(books).where(eq(books.id, id)).limit(1), [id]);
+  return useLiveQuery(
+    db
+      .select()
+      .from(books)
+      .where(and(eq(books.id, id), isNull(books.deletedAt)))
+      .limit(1),
+    [id],
+  );
 }
 
 /** Remote search against Open Library, cached by TanStack Query. */

@@ -1,3 +1,4 @@
+import { sql } from 'drizzle-orm';
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const BOOK_STATUSES = ['reading', 'finished'] as const;
@@ -19,6 +20,16 @@ export const books = sqliteTable('books', {
   createdAt: integer('created_at', { mode: 'timestamp_ms' })
     .notNull()
     .$defaultFn(() => new Date()),
+
+  // --- Sync bookkeeping (see src/features/sync) ---
+  /** Last local or remote change. Drives last-write-wins conflict resolution. */
+  updatedAt: integer('updated_at', { mode: 'timestamp_ms' })
+    .notNull()
+    .default(sql`0`),
+  /** Soft delete, so deletions sync to other devices. Queries must filter these out. */
+  deletedAt: integer('deleted_at', { mode: 'timestamp_ms' }),
+  /** True when this row has changes the server hasn't accepted yet. */
+  dirty: integer('dirty', { mode: 'boolean' }).notNull().default(true),
 });
 
 export type Book = typeof books.$inferSelect;

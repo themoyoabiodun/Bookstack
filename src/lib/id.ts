@@ -1,4 +1,6 @@
-/** Short random id for local rows. Not cryptographically secure — it only needs to be unique per device. */
+import { randomUUID } from 'expo-crypto';
+
+/** Globally unique id for local rows, so books created offline on different devices never clash. */
 export function createId() {
-  return Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+  return randomUUID();
 }
