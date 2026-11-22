@@ -2,7 +2,7 @@ import { router } from 'expo-router';
 import { Search, X } from 'lucide-react-native';
 import { useState } from 'react';
 import { ActivityIndicator, FlatList, Pressable, TextInput, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView } from '@/components/ui/safe-area-view';
 
 import { BookCover } from '@/components/books/book-cover';
 import { IconButton } from '@/components/ui/icon-button';

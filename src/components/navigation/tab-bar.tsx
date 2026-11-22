@@ -47,8 +47,8 @@ export function TabBar({ state, emitter, navigateToTab }: TabBarProps) {
         <Icon
           size={24}
           color={focused ? colors.content : colors.contentSecondary}
-          fill={focused ? colors.content : 'transparent'}
-          strokeWidth={focused ? 1.5 : 2}
+          fill="none"
+          strokeWidth={focused ? 2.4 : 2}
         />
       </Pressable>
     );

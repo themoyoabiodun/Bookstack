@@ -3,7 +3,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { Check, ChevronLeft, Pencil, Share as ShareIcon } from 'lucide-react-native';
 import { useState } from 'react';
 import { Pressable, ScrollView, Share, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView } from '@/components/ui/safe-area-view';
 
 import { BookCover } from '@/components/books/book-cover';
 import { ProgressBar } from '@/components/books/progress-bar';

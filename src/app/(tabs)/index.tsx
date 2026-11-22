@@ -1,5 +1,5 @@
 import { ScrollView, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView } from '@/components/ui/safe-area-view';
 
 import { BookGrid } from '@/components/books/book-grid';
 import { EmptyShelf } from '@/components/books/empty-shelf';
